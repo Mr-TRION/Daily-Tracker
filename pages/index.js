@@ -14,7 +14,6 @@ import CreateList from "../components/List/CreateList";
 import CardList from "../components/List/CardList";
 
 function Index({ user, listsData, errorLoading }) {
-  //   const [posts, setPosts] = useState(postsData || []);
   const [lists, setLists] = useState(listsData || []);
   const [showToastr, setShowToastr] = useState(false);
   const [hasMore, setHasMore] = useState(true);
@@ -45,30 +44,10 @@ function Index({ user, listsData, errorLoading }) {
     }
   };
 
-  //   if (posts.length === 0 || errorLoading) return <NoPosts />;
-
   return (
     <>
-      {/* {showToastr && <PostDeleteToastr />} */}
       <Segment>
         <CreateList user={user} setLists={setLists} />
-        {/* <CreatePost user={user} setPosts={setPosts} /> */}
-        {/* <InfiniteScroll
-          hasMore={hasMore}
-          next={fetchDataOnScroll}
-          loader={<PlaceHolderPosts />}
-          endMessage={<EndMessage />}
-          dataLength={lists.length}
-        >
-          {lists.map((post) => (
-            <CardList
-              key={lists._id}
-              list={lists}
-              user={user}
-              setLists={setLists}
-            />
-          ))}
-        </InfiniteScroll> */}
 
         {lists.length === 0 || errorLoading ? (
           <NoLists />

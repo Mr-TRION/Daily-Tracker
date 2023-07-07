@@ -19,14 +19,7 @@ import baseUrl from "../../utils/baseUrl";
 import EditList from "./EditList";
 import { deleteList } from "../../utils/listActions";
 
-// import { deletePost, likePost } from "../../utils/postActions";
 function CardList({ listId, list, user, setLists, setShowToastr }) {
-  //   const [likes, setLikes] = useState(post.likes);
-
-  //   const isLiked =
-  //     likes.length > 0 &&
-  //     likes.filter((like) => like.user === user._id).length > 0;
-
   const [todo, setTodo] = useState(list.todo);
 
   const [error, setError] = useState(null);

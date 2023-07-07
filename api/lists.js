@@ -63,26 +63,6 @@ router.get("/", authMiddleware, async(req, res) => {
     }
 });
 
-// router.get(`/:username`, authMiddleware, async(req, res) => {
-//     try {
-//         const { username } = req.params;
-
-//         const user = await UserModel.findOne({ username: username.toLowerCase() });
-//         if (!user) {
-//             return res.status(404).send("No User Found");
-//         }
-
-//         const lists = await ListModel.find({ user: user._id })
-//             .sort({ createdAt: -1 })
-//             .populate("user")
-//             .populate("todo.user");
-
-//         return res.json(lists);
-//     } catch (error) {
-//         console.error(error);
-//         return res.status(500).send("Server Error");
-//     }
-// });
 
 router.get("/:listId", authMiddleware, async(req, res) => {
     try {
@@ -150,23 +130,7 @@ router.delete('/:listId', authMiddleware, async(req, res) => {
         const { listId } = req.params;
         const { userId } = req;
 
-        // const list = await ListModel.findById(req.params.listId)
-        //     .populate("user")
-        //     .populate("todo.user");
-        // if (!list) {
-        //     return res.status(404).send("List not found");
-        // }
-
         await ListModel.findByIdAndDelete(listId);
-
-        // if (list.user.toString() !== userId) {
-        //     const user = await UserModel.findById(userId);
-        //     if (user.role === "root") {
-        //         await deletePost();
-        //     } else {
-        //         return res.status(401).send("Unauthorized");
-        //     }
-        // }
         return res.status(200).send("Success");
     } catch (error) {
         console.error(error);
@@ -239,25 +203,6 @@ router.post('/update/:listId/:todoId', authMiddleware, async(req, res) => {
 
         todo.text = await text;
         await list.save();
-
-
-
-        // if (listData.user === userId) {
-        //     listData.text = await text;
-        //     await listData.save();
-        // } else {
-        //     console.log('unauthorised')
-        // }
-        // listData.map(async(listData) => {
-        //     console.log(listData.todo._id);
-        //     if (listData.todo._id === todoId) {
-        //         listData.todo.text = await text;
-        //         await listData.save();
-        //     }
-        // })
-
-        // listData.text = await text;
-        // await listData.save();
 
         return res.status(200).send("Success");
     } catch (error) {

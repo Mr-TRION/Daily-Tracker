@@ -10,40 +10,19 @@ function CreateList({ user, setLists }) {
   const [error, setError] = useState(null);
   const [highlighted, setHighlighted] = useState(false);
 
-  //   const [media, setMedia] = useState(null);
-  //   const [mediaPreview, setMediaPreview] = useState(null);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    // if (name === "media") {
-    //   setMedia(files[0]);
-    //   setMediaPreview(URL.createObjectURL(files[0]));
-    // }
 
     setNewList((prev) => ({ ...prev, [name]: value }));
     console.log(value);
   };
 
-  //   const addStyles = () => ({
-  //     textAlign: "center",
-  //     height: "150px",
-  //     width: "150px",
-  //     border: "dotted",
-  //     paddingTop: media === null && "60px",
-  //     cursor: "pointer",
-  //     borderColor: highlighted ? "green" : "black"
-  //   });
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    // let picUrl;
 
     await submitNewList(newList.text, setLists, setNewList, setError);
 
-    // setMedia(null);
-    // setMediaPreview(null);
     setLoading(false);
   };
 
@@ -67,62 +46,6 @@ function CreateList({ user, setLists }) {
             width={16}
           />
         </Form.Group>
-
-        <Form.Group>
-          {/* <Form.Input
-            value={newList.url}
-            name="url"
-            onChange={handleChange}
-            label="Image URL"
-            icon="map marker alternate"
-            placeholder="Image url"
-          /> */}
-
-          {/* <input
-            ref={inputRef}
-            onChange={handleChange}
-            name="media"
-            style={{ display: "none" }}
-            type="file"
-            accept="image/*"
-          /> */}
-        </Form.Group>
-
-        {/* <div
-          onClick={() => inputRef.current.click()}
-          style={addStyles()}
-          onDrag={e => {
-            e.preventDefault();
-            setHighlighted(true);
-          }}
-          onDragLeave={e => {
-            e.preventDefault();
-            setHighlighted(false);
-          }}
-          onDrop={e => {
-            e.preventDefault();
-            setHighlighted(true);
-
-            const droppedFile = Array.from(e.dataTransfer.files);
-
-            setMedia(droppedFile[0]);
-            setMediaPreview(URL.createObjectURL(droppedFile[0]));
-          }}>
-          {media === null ? (
-            <Icon name="plus" size="big" />
-          ) : (
-            <>
-              <Image
-                style={{ height: "150px", width: "150px" }}
-                src={mediaPreview}
-                alt="PostImage"
-                centered
-                size="medium"
-              />
-            </>
-          )}
-        </div> */}
-        {/* <Divider hidden /> */}
 
         <Button
           circular

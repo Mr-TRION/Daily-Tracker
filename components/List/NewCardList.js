@@ -10,22 +10,14 @@ import {
   Header,
   Modal,
 } from "semantic-ui-react";
-// import PostComments from "./PostComments";
-// import CommentInputField from "./CommentInputField";
+
 import calculateTime from "../../utils/calculateTime";
 import Link from "next/link";
 import baseUrl from "../../utils/baseUrl";
 import EditList from "./EditList";
 import { deleteList } from "../../utils/listActions";
 
-// import { deletePost, likePost } from "../../utils/postActions";
 function CardList({ list, user, setLists, setShowToastr }) {
-  //   const [likes, setLikes] = useState(post.likes);
-
-  //   const isLiked =
-  //     likes.length > 0 &&
-  //     likes.filter((like) => like.user === user._id).length > 0;
-
   const [todo, setTodo] = useState(list.todo);
 
   const [error, setError] = useState(null);
@@ -41,23 +33,6 @@ function CardList({ list, user, setLists, setShowToastr }) {
 
   return (
     <>
-      {/* {showModal && (
-        <Modal
-          open={showModal}
-          closeIcon
-          closeOnDimmerClick
-          onClose={() => setShowModal(false)}
-        >
-          <Modal.Content>
-            {post.picUrl ? (
-              <ImageModal {...addPropsToModal()} />
-            ) : (
-              <NoImageModal {...addPropsToModal()} />
-            )}
-          </Modal.Content>
-        </Modal>
-      )} */}
-
       <Segment basic>
         <Card color="teal" fluid>
           <Card.Content>
@@ -124,69 +99,7 @@ function CardList({ list, user, setLists, setShowToastr }) {
               </Popup>
             </>
             <Card.Meta>{calculateTime(list.createdAt)}</Card.Meta>
-
-            {/* {post.location && <Card.Meta content={post.location} />} */}
           </Card.Content>
-
-          {/* <Card.Content extra> */}
-          {/* <Icon
-              name={isLiked ? "heart" : "heart outline"}
-              color="red"
-              style={{ cursor: "pointer" }}
-              onClick={() =>
-                likePost(post._id, user._id, setLikes, isLiked ? false : true)
-              }
-            /> */}
-
-          {/* <LikesList
-              postId={post._id}
-              trigger={
-                likes.length > 0 && (
-                  <span className="spanLikesList">
-                    {`${likes.length} ${likes.length === 1 ? "like" : "likes"}`}
-                  </span>
-                )
-              }
-            /> */}
-
-          {/* <Icon
-              name="comment outline"
-              style={{ marginLeft: "7px" }}
-              color="blue"
-            /> */}
-
-          {/* {comments.length > 0 &&
-              comments.map(
-                (comment, i) =>
-                  i < 3 && (
-                    <PostComments
-                      key={comment._id}
-                      comment={comment}
-                      postId={post._id}
-                      user={user}
-                      setComments={setComments}
-                    />
-                  )
-              )} */}
-
-          {/* {comments.length > 3 && (
-              <Button
-                content="View More"
-                color="teal"
-                basic
-                circular
-                onClick={() => setShowModal(true)}
-              />
-            )} */}
-
-          {/* <Divider hidden /> */}
-
-          {/* <CommentInputField
-              user={user}
-              postId={post._id}
-              setComments={setComments}
-            /> */}
-          {/* </Card.Content> */}
         </Card>
       </Segment>
       <Divider hidden />
