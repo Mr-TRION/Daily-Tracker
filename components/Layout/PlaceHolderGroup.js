@@ -1,5 +1,5 @@
 import React from "react";
-import { Placeholder, Divider } from "semantic-ui-react";
+import { Placeholder, Divider, Container, Icon } from "semantic-ui-react";
 import { range } from "lodash";
 
 export const PlaceHolderPosts = () =>
@@ -20,3 +20,10 @@ export const PlaceHolderPosts = () =>
       <Divider hidden />
     </>
   ));
+
+export const EndMessage = () => (
+  <Container textAlign="center">
+    <Icon name="refresh" size="large" />
+    <Divider hidden />
+  </Container>
+);
