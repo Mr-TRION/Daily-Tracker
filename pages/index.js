@@ -55,7 +55,6 @@ function Index({ user, listsData, errorLoading }) {
           <InfiniteScroll
             hasMore={hasMore}
             next={fetchDataOnScroll}
-            loader={<PlaceHolderPosts />}
             endMessage={<EndMessage />}
             dataLength={lists.length}
           >
