@@ -29,12 +29,11 @@ class MyApp extends App {
           headers: { Authorization: token },
         });
 
-        const { user, userFollowStats } = res.data;
+        const { user } = res.data;
 
         if (user) !protectedRoutes && redirectUser(ctx, "/");
 
         pageProps.user = user;
-        pageProps.userFollowStats = userFollowStats;
       } catch (error) {
         destroyCookie(ctx, "token");
         redirectUser(ctx, "/login");
